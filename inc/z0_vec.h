@@ -5,10 +5,10 @@
 #include "z0_int.h"
 
 struct z0_vec {
-	uint len;
-	uint cap;
-	uint size;
-	void *data;
+	usize len;
+	usize cap;
+	usize size;
+	void  *data;
 };
 
 #define Z0_VEC_STS_OK	Z0_STS_NEW(0, Z0_STS_LVL_INF)
@@ -16,20 +16,20 @@ struct z0_vec {
 #define Z0_VEC_STS_ERR	Z0_STS_NEW(0, Z0_STS_LVL_ERR)
 #define Z0_VEC_STS_MEM	Z0_STS_NEW(1, Z0_STS_LVL_ERR)
 
-uint
-z0_vec_new(struct z0_vec*, uint);
+usize
+z0_vec_new(struct z0_vec*, usize);
 
 void
 z0_vec_del(struct z0_vec*);
 
-uint
+usize
 z0_vec_add(struct z0_vec*, void*);
 
-uint
-z0_vec_ref(struct z0_vec*, uint, void**);
+usize
+z0_vec_ref(struct z0_vec*, usize, void**);
 
-uint
-z0_vec_get(struct z0_vec*, uint, void*);
+usize
+z0_vec_get(struct z0_vec*, usize, void*);
 
 #ifdef Z0_USE_NAMESPACE
 	#define VEC_STS_OK	Z0_VEC_STS_OK

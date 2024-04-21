@@ -7,7 +7,7 @@
 #define TRUE	1
 #define FALSE	0
 
-typedef size_t		uint;
+typedef size_t		usize;
 
 typedef int8_t		s8;
 typedef int16_t		s16;

@@ -8,7 +8,7 @@
 #define Z0_REALLOC 	realloc
 #define Z0_FREE 	free
 
-static uint
+static usize
 vec_chk(struct vec* vec)
 {
 	if (vec->len >= vec->cap) {
@@ -26,8 +26,8 @@ vec_chk(struct vec* vec)
 	return VEC_STS_OK;
 }
 
-uint
-vec_new(struct vec *vec, uint size)
+usize
+vec_new(struct vec *vec, usize size)
 {
 	vec->cap = 4;
 	vec->len = 0;
@@ -48,10 +48,10 @@ vec_del(struct vec *vec)
 	Z0_FREE(vec->data);
 }
 
-uint
+usize
 vec_add(struct vec *vec, void *ent)
 {
-	uint sts;
+	usize sts;
 	sts = vec_chk(vec);
 	if (Z0_STS_ERR(sts)) {
 		return sts;
@@ -66,8 +66,8 @@ vec_add(struct vec *vec, void *ent)
 	return VEC_STS_OK;
 }
 
-uint
-vec_ref(struct vec *vec, uint idx, void **ent)
+usize
+vec_ref(struct vec *vec, usize idx, void **ent)
 {
 	if (idx >= vec->len) {
 		return VEC_STS_NF;
@@ -81,8 +81,8 @@ vec_ref(struct vec *vec, uint idx, void **ent)
 	return VEC_STS_OK;
 }
 
-uint
-vec_get(struct vec *vec, uint idx, void *ent)
+usize
+vec_get(struct vec *vec, usize idx, void *ent)
 {
 	if (idx >= vec->len) {
 		return VEC_STS_NF;
