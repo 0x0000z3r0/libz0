@@ -67,7 +67,7 @@ vec_add(struct vec *vec, void *ent)
 }
 
 uint
-vec_get(struct vec *vec, uint idx, void **ent)
+vec_ref(struct vec *vec, uint idx, void **ent)
 {
 	if (idx >= vec->len) {
 		return VEC_STS_NF;
@@ -77,6 +77,21 @@ vec_get(struct vec *vec, uint idx, void **ent)
 	ptr = vec->data;
 
 	*ent = ptr + idx * vec->size;
+
+	return VEC_STS_OK;
+}
+
+uint
+vec_get(struct vec *vec, uint idx, void *ent)
+{
+	if (idx >= vec->len) {
+		return VEC_STS_NF;
+	}
+
+	u8 *ptr;
+	ptr = vec->data;
+
+	memcpy(ent, ptr + idx * vec->size, vec->size);
 
 	return VEC_STS_OK;
 }

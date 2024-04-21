@@ -26,7 +26,10 @@ uint
 z0_vec_add(struct z0_vec*, void*);
 
 uint
-z0_vec_get(struct z0_vec*, uint, void**);
+z0_vec_ref(struct z0_vec*, uint, void**);
+
+uint
+z0_vec_get(struct z0_vec*, uint, void*);
 
 #ifdef Z0_USE_NAMESPACE
 	#define VEC_STS_OK	Z0_VEC_STS_OK
@@ -40,6 +43,7 @@ z0_vec_get(struct z0_vec*, uint, void**);
 	#define vec_del z0_vec_del
 
 	#define vec_add z0_vec_add
+	#define vec_ref z0_vec_ref
 	#define vec_get z0_vec_get
 #endif
 
