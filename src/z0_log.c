@@ -18,7 +18,7 @@ log_lvl(u8 lvl)
 }
 
 void
-z0_log_dbg(const char *fmt, ...)
+log_dbg(const char *fmt, ...)
 {
 	if (g_log_ctx.lvl > LOG_LVL_DBG)
 		return;
@@ -34,7 +34,7 @@ z0_log_dbg(const char *fmt, ...)
 }
 
 void
-z0_log_inf(const char *fmt, ...)
+log_inf(const char *fmt, ...)
 {
 	if (g_log_ctx.lvl > LOG_LVL_INF)
 		return;
@@ -50,7 +50,7 @@ z0_log_inf(const char *fmt, ...)
 }
 
 void
-z0_log_wrn(const char *fmt, ...)
+log_wrn(const char *fmt, ...)
 {
 	if (g_log_ctx.lvl > LOG_LVL_WRN)
 		return;
@@ -66,7 +66,7 @@ z0_log_wrn(const char *fmt, ...)
 }
 
 void
-z0_log_err(const char *fmt, ...)
+log_err(const char *fmt, ...)
 {
 	if (g_log_ctx.lvl > LOG_LVL_ERR)
 		return;
@@ -82,7 +82,7 @@ z0_log_err(const char *fmt, ...)
 }
 
 void
-z0_log_raw(const char *fmt, ...)
+log_raw(const char *fmt, ...)
 {
 	va_list args;
 	va_start(args, fmt);
