@@ -21,6 +21,8 @@ enum {
 #define Z0_COL_CYN  "\x1B[36m"
 #define Z0_COL_WHT  "\x1B[37m"
 
+#define Z0_TRM_UP "\x1B[A"
+
 void
 z0_log_lvl(u8);
 
@@ -54,6 +56,8 @@ z0_log_raw(const char*, ...);
 	#define COL_MAG Z0_COL_MAG
 	#define COL_CYN Z0_COL_CYN
 	#define COL_WHT Z0_COL_WHT
+
+	#define TRM_UP	Z0_TRM_UP
 
 	#define log_lvl z0_log_lvl
 

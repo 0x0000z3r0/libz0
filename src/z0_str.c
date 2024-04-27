@@ -48,6 +48,21 @@ str_new(struct str *str, usize len, const s8 *buf)
 }
 
 usize
+str_new_lit(struct str *str, const i8 *buf)
+{
+	str->cap = strlen(buf);
+	str->len = str->cap;
+	str->ptr = Z0_MALLOC(str->cap);
+	if (str->ptr == NULL) {
+		return STR_STS_MEM;
+	}
+
+	memcpy(str->ptr, buf, str->len);
+
+	return STR_STS_OK;
+}
+
+usize
 str_new_cap(struct str *str, usize cap)
 {
 	str->cap = cap;
