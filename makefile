@@ -4,6 +4,7 @@ SRCDIR=src
 INCDIR=inc
 BLDDIR=bld
 TESTDIR=test
+MODDIR=mod
 
 CFLAGS=-Wall -Wextra -fsanitize=leak,address,undefined
 
@@ -35,6 +36,13 @@ stub: $(TESTDIR)/z0_stub.c $(TESTOBJS) lib
 $(BLDDIR)/%.test.o: $(TESTDIR)/%.test.c $(INCDIR)/%.h
 	$(CC) -I$(INCDIR) $(CFLAGS) -c $< -o $@
 
+MODSRCS=$(wildcard $(MODDIR)/*.c)
+MODOBJS=$(patsubst $(MODDIR)%.c, $(BLDDIR)%.o, $(MODSRCS))
+
+.PHONY:mod
+mod:
+	cp $(MODDIR)/z0_kmod.ko $(BLDDIR)/
+	objcopy --add-section z0_mod=$(BLDDIR)/z0_kmod.ko --set-section-flags z0_mod=code,readonly $(BLDDIR)/z0_mod.o $(BLDDIR)/z0_mod.o
 
 clean:
 	rm -rf bld

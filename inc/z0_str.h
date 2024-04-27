@@ -24,6 +24,9 @@ z0_str_ref_lit(struct z0_str_ref*, const i8*);
 void
 z0_str_ref_s32(struct z0_str_ref*, s32*);
 
+usize
+z0_str_ref_pos_lit(struct z0_str_ref*, usize*, const i8*);
+
 struct z0_str {
 	usize	cap;
 	usize	len;
@@ -67,6 +70,7 @@ z0_str_len(struct z0_str*, usize);
 	#define str_ref		z0_str_ref
 	#define str_ref_lit	z0_str_ref_lit
 	#define str_ref_s32	z0_str_ref_s32
+	#define str_ref_pos_lit	z0_str_ref_pos_lit
 
 	#define str_new		z0_str_new
 	#define str_new_lit	z0_str_new_lit

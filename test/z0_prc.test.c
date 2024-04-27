@@ -21,8 +21,6 @@ TEST(prc_all)
 			goto TEST_EXIT_LABEL;
 		}
 
-		log_inf("%i: %.*s", prc.pid, (s32)prc.name.len, prc.name.ptr);
-
 		str_del(&prc.name);
 	}
 

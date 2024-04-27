@@ -33,6 +33,22 @@ str_ref_s32(struct str_ref *str, s32 *num)
 }
 
 usize
+str_ref_pos_lit(struct str_ref *str, usize *pos, const i8 *buf)
+{
+	usize len;
+	len = strlen(buf);
+	
+	for (usize i = 0; i < str->len; ++i) {
+		if (memcmp(str->ptr + i, buf, len) == 0) {
+			*pos = i;
+			return STR_STS_OK;
+		}
+	}
+
+	return STR_STS_NF;
+}
+
+usize
 str_new(struct str *str, usize len, const s8 *buf)
 {
 	str->cap = len;
